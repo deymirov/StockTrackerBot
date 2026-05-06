@@ -109,21 +109,22 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ReadConfig" sap:VirtualizedContainerService.HintSize="639.6,585.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+  <Sequence DisplayName="ReadConfig" sap:VirtualizedContainerService.HintSize="802,587" sap2010:WorkflowViewState.IdRef="Sequence_3">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="483.2,376.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[In_ConfigPath]">
+    <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="484,377" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Password="{x:Null}" SecureEditPassword="{x:Null}" SecurePassword="{x:Null}" SensitivityLabel="{x:Null}" Workbook="{x:Null}" WorkbookPath="[In_ConfigPath]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,235.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,235" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -134,10 +135,13 @@
                 <OutArgument x:TypeArguments="x:String">[Out_ApiKey]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[Out_ConfigData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="416,83.2" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Config">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[Out_ConfigData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="416,83" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Config">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
-                  <Literal x:TypeArguments="x:String" Value="" />
+                  <Literal x:TypeArguments="x:String">
+                    <Literal.Result>
+                      <OutArgument x:TypeArguments="x:String" />
+                    </Literal.Result></Literal>
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
@@ -145,12 +149,12 @@
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:FilterDataTable DataTable="[Out_ConfigData]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="483.2,185.6" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[Out_ConfigData]" SelectColumnsMode="Remove">
+    <ui:FilterDataTable DataTable="[Out_ConfigData]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,187" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[Out_ConfigData]" SelectColumnsMode="Remove">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
             <ui:FilterOperationArgument.Column>
-              <InArgument x:TypeArguments="x:String">["Active"]</InArgument>
+              <InArgument x:TypeArguments="x:String">["Active(Y/N)"]</InArgument>
             </ui:FilterOperationArgument.Column>
             <ui:FilterOperationArgument.Operand>
               <InArgument x:TypeArguments="x:String">["Y"]</InArgument>

@@ -104,15 +104,13 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckAlerts" sap:VirtualizedContainerService.HintSize="832,1736.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckAlerts" sap:VirtualizedContainerService.HintSize="802.0000000000001,1736.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Double" Name="threshold">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Double" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Double" Default="0" Name="threshold" />
       <Variable x:TypeArguments="sd:DataRow" Name="matchingRows" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Alerts" />
     </Sequence.Variables>
@@ -129,7 +127,7 @@
         <InArgument x:TypeArguments="sd:DataTable">[In_StockData.Clone()]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[In_StockData]" DisplayName="Loop Through Stock Data" sap:VirtualizedContainerService.HintSize="524,1370.5" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[In_StockData]" DisplayName="Loop Through Stock Data" sap:VirtualizedContainerService.HintSize="524,1370.5" sap2010:WorkflowViewState.IdRef="ForEachRow_1" MaxIterations="{x:Null}" Values="{x:Null}">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -162,7 +160,7 @@
                       <OutArgument x:TypeArguments="x:Double">[threshold]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Double">[CDbl(matchingRows("AlertThreshold").ToString())]</InArgument>
+                      <InArgument x:TypeArguments="x:Double">[CDbl(matchingRows("AlertThreshold%").ToString())]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <If Condition="[Math.Abs(CDbl(row(&quot;ChangePercent&quot;).ToString())) &gt; threshold]" DisplayName="Check Threshold Exceeded" sap:VirtualizedContainerService.HintSize="452,494.5" sap2010:WorkflowViewState.IdRef="If_2">
@@ -173,7 +171,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[row.ItemArray]" DataTable="[dt_Alerts]" DisplayName="Add Alert Row" sap:VirtualizedContainerService.HintSize="416,213.5" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        <ui:AddDataRow ArrayRow="[row.ItemArray]" DataRow="{x:Null}" DataTable="[dt_Alerts]" DisplayName="Add Alert Row" sap:VirtualizedContainerService.HintSize="416,213.5" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                       </Sequence>
                     </If.Then>
                     <If.Else>
