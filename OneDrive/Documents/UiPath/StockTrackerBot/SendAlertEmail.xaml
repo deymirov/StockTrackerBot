@@ -152,7 +152,7 @@
                 <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">["&lt;html&gt;&lt;body&gt;..."]</InArgument>
+                <InArgument x:TypeArguments="x:String">["Stock Price Alert!" &amp; vbCrLf &amp; vbCrLf &amp; "The following stocks exceeded their threshold:" &amp; vbCrLf]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[In_Alerts]" DisplayName="Loop Through Alerts" sap:VirtualizedContainerService.HintSize="452,410" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
@@ -172,7 +172,7 @@
                         <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[emailBody + "&lt;tr&gt;&lt;td&gt;..."]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[emailBody &amp; CurrentRow("Ticker").ToString() &amp; " - Price: " &amp; CurrentRow("Price").ToString() &amp; " - Change: " &amp; CurrentRow("ChangePercent").ToString() &amp; "%" &amp; vbCrLf]</InArgument>
                       </Assign.Value>
                     </Assign>
                   </Sequence>
@@ -184,7 +184,7 @@
                 <OutArgument x:TypeArguments="x:String">[emailBody]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String">[emailBody + "&lt;/table&gt;..."]</InArgument>
+                <InArgument x:TypeArguments="x:String">[emailBody &amp; vbCrLf &amp; "Please review your portfolio."]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseRichTextEditor="{x:Null}" Body="[emailBody]" ConnectionMode="LegacyConfiguration" DisplayName="Send Outlook Desktop Mail Message" sap:VirtualizedContainerService.HintSize="452,219.5" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[&quot;Stock Price Alert - &quot; + Now.ToString(&quot;yyyy-MM-dd HH:mm&quot;)]" To="[In_Recipient]" UseISConnection="False">
