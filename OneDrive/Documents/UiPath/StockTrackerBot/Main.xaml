@@ -89,10 +89,14 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="802,2138.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="639,2138.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_StockData" />
-      <Variable x:TypeArguments="x:String" Default="dovraneymirov171@gmail.com" Name="str_Recipient" />
+      <Variable x:TypeArguments="x:String" Name="str_Recipient">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">dovran.eymirov@ktu.edu</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Alerts" />
       <Variable x:TypeArguments="x:Double" Name="dbl_ChangePercent" />
       <Variable x:TypeArguments="x:Double" Name="dbl_Price" />

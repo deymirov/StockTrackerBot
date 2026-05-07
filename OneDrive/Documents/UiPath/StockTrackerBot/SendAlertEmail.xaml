@@ -111,9 +111,11 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendAlertEmail" sap:VirtualizedContainerService.HintSize="832,1368.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendAlertEmail" sap:VirtualizedContainerService.HintSize="639,1368.5" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="tableRows">
         <Variable.Default>
@@ -185,7 +187,7 @@
                 <InArgument x:TypeArguments="x:String">[emailBody + "&lt;/table&gt;..."]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseRichTextEditor="{x:Null}" Body="[emailBody]" ConnectionMode="Undefined" DisplayName="Send Outlook Desktop Mail Message" sap:VirtualizedContainerService.HintSize="452,219.5" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[&quot;Stock Price Alert - &quot; + Now.ToString(&quot;yyyy-MM-dd HH:mm&quot;)]" To="dovran.eymirov@ktu.edu; cem.senol@ktu.edu; ali.sezer@ktu.edu; hammad.rashid@ktu.edu; maksym.sviatniy@ktu.edu" UseISConnection="False">
+            <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseRichTextEditor="{x:Null}" Body="[emailBody]" ConnectionMode="LegacyConfiguration" DisplayName="Send Outlook Desktop Mail Message" sap:VirtualizedContainerService.HintSize="452,219.5" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[&quot;Stock Price Alert - &quot; + Now.ToString(&quot;yyyy-MM-dd HH:mm&quot;)]" To="[In_Recipient]" UseISConnection="False">
               <ui:SendOutlookMail.ConnectionDetailsBackupSlot>
                 <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
                   <usau:BackupSlot.BackupValues>
